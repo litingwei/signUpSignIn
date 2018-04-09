@@ -1,0 +1,3 @@
+# signUpSignIn
+bootstrap和angular实现登录注册页面，
+包括一些正则表达式的判断和错误提醒
