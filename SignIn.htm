@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://cdn.bootcss.com/angular.js/1.5.11/angular.min.js"></script>
+</head>
+<body>
+	<div class="col-sm-6 col-sm-offset-3" ng-controller="Aaa">
+		<h1>请登录</h1>
+		<div ng-cloak>{{tip}}</div>
+		<form novalidate name="nForm">
+			<div class="form-group">
+				<div class="input-group">
+					<div class="input-group-addon">
+						<span class="glyphicon glyphicon-user"></span>
+					</div>
+					<input type="text" name="nText" ng-model="text1" class="form-control" placeholder="邮箱/用户名/手机号" required>				
+				</div>
+			</div>	
+			<div class="form-group">
+				<div class="input-group">
+					<!-- <label>密码:</label> -->
+					<div class="input-group-addon">
+						<span class="glyphicon glyphicon-lock"></span>
+					</div> 	
+					<input type="password" ng-model="password1" name="nPassword" class="form-control" placeholder="密码" required>					
+				</div>
+			</div>			
+			<div class="col-sm-offset-9">
+				<a href="">忘记密码</a>
+			</div>
+			<!-- <div>{{nForm.nText.$error}}</div>
+			<div>{{nForm.nPassword.$error}}</div>  -->
+			<button ng-click="change(nForm.nText.$error,nForm.nPassword.$error)" type="submit" class="btn btn-primary btn-block">登录</button>
+			<div class="col-sm-offset-9">
+				<a href="form004.htm">立即注册</a>
+			</div>			
+		</form>
+	</div>
+	<script type="text/javascript">
+	var m1=angular.module('myApp',[]);
+	m1.controller('Aaa',['$scope',function($scope){
+		$scope.tip= " " ;
+		$scope.change=function(err1,err2){
+			console.log(err1);
+			if(err1.hasOwnProperty("required")&&err1["required"]==true){
+				return $scope.tip="请输入用户名";
+			}else if(err2.hasOwnProperty("required")&&err2["required"]==true){
+				return $scope.tip="请输入密码";
+			}		
+		}
+	}])
+	</script>
+</body>
+</html>
